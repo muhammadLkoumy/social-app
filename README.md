@@ -1,3 +1,3 @@
 # social_app
 
-![](social-chat.gif)
+![](git_images/social-chat.gif)
