@@ -1,4 +1,2 @@
 # social_app
 
-
-
