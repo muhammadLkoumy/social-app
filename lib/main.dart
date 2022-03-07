@@ -74,9 +74,12 @@ class SocialApp extends StatelessWidget {
 
   const SocialApp({Key? key, required this.startScreen}) : super(key: key);
 
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
