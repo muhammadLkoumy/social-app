@@ -20,7 +20,7 @@ class MainScreen extends StatelessWidget {
         var cubit = SocialCubit.get(context);
         return Scaffold(
           appBar: AppBar(
-            title: Text(cubit.titles[cubit.currentIndex]),
+            title: Text(cubit.titles[cubit.currentIndex],style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 1.3),),
           ),
           body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(

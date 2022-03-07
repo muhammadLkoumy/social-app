@@ -58,13 +58,20 @@ class UpdateProfileScreen extends StatelessWidget {
                   _inputFields(),
                   if (state is UpdateUserLoadingState)
                     const LinearProgressIndicator(),
-                  MaterialButton(
-                    onPressed: () {
-                      CacheHelper.removeData(key: 'uId').then((value) {
-                        MyNavigators.navigateAndFinish(context, LoginScreen());
-                      });
-                    },
-                    child: Text('Logout', style: TextStyle(color: Colors.blue)),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 45,
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        CacheHelper.removeData(key: 'uId').then((value) {
+                          MyNavigators.navigateAndFinish(context, LoginScreen());
+                        });
+                      },
+                      child: Text('Logout'.toUpperCase(), style: TextStyle(color: Colors.blue, fontSize: 16)),
+                    ),
                   ),
                 ],
               ),

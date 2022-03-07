@@ -61,18 +61,20 @@ class HomeScreen extends StatelessWidget {
         children: [
           Image(
             width: double.infinity,
-            height: 200,
+            height: 150,
             fit: BoxFit.cover,
             image: NetworkImage(
-                'https://img.freepik.com/free-photo/beauty-portrait-ginger-woman-with-long-hair-posing-with-green-leaf_171337-927.jpg?w=740'),
+                'https://img.freepik.com/free-vector/group-therapy-concept-people-meeting-talking-discussing-problems-giving-getting-support-vector-illustration-counselling-addiction-psychologist-job-support-session-concept_74855-10076.jpg?w=826'),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Communicate with friends',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Container(
+          //     child: Text(
+          //       'Communicate with friends',
+          //       style: TextStyle(color: Colors.white),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

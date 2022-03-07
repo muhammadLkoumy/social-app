@@ -17,7 +17,6 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import '../../modules/home/home_screen.dart';
 import '../../modules/profile/profile_screen.dart';
-import '../../modules/users/users_screen.dart';
 
 class SocialCubit extends Cubit<SocialStates> {
   SocialCubit() : super(SocialInitialState());
@@ -41,7 +40,6 @@ class SocialCubit extends Cubit<SocialStates> {
     'Home',
     'Chats',
     'Add Post',
-    'Users',
     'Profile',
   ];
 
@@ -49,7 +47,6 @@ class SocialCubit extends Cubit<SocialStates> {
     HomeScreen(),
     ChatScreen(),
     PostScreen(),
-    UsersScreen(),
     ProfileScreen(),
   ];
 
@@ -71,12 +68,6 @@ class SocialCubit extends Cubit<SocialStates> {
         IconBroken.Paper_Upload,
       ),
       label: 'Post',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(
-        IconBroken.User1,
-      ),
-      label: 'Users',
     ),
     BottomNavigationBarItem(
       icon: Icon(
