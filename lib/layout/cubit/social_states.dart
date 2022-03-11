@@ -87,3 +87,8 @@ class SendMessageSuccessState extends SocialStates {}
 class SendMessageErrorState extends SocialStates {}
 
 class GetMessagesSuccessState extends SocialStates {}
+
+// delete user
+
+class DeleteUserSuccessState extends SocialStates {}
+class DeleteUserErrorState extends SocialStates {}

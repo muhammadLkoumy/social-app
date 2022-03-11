@@ -73,6 +73,22 @@ class UpdateProfileScreen extends StatelessWidget {
                       child: Text('Logout'.toUpperCase(), style: TextStyle(color: Colors.blue, fontSize: 16)),
                     ),
                   ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 45,
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        CacheHelper.removeData(key: 'uId').then((value) {
+                          SocialCubit.get(context).deleteUser();
+                          MyNavigators.navigateAndFinish(context, LoginScreen());
+                        });
+                      },
+                      child: Text('delete account'.toUpperCase(), style: TextStyle(color: Colors.blue, fontSize: 16)),
+                    ),
+                  ),
                 ],
               ),
             ),

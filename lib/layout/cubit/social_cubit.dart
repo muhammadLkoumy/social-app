@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -196,7 +197,6 @@ class SocialCubit extends Cubit<SocialStates> {
     String? profileImage,
     String? coverImage,
   }) {
-
     emit(UpdateUserLoadingState());
     userModel = UserModel(
       name: name,
@@ -294,7 +294,8 @@ class SocialCubit extends Cubit<SocialStates> {
 
   List<PostModel> posts = [];
   List<String> postsId = [];
-  List<int> likes = [];
+  Map<String, int> likesNumber = {};
+  Map<String, int> commentsNumber = {};
 
   void getPosts() {
     FirebaseFirestore.instance
@@ -303,10 +304,26 @@ class SocialCubit extends Cubit<SocialStates> {
         .get()
         .then((value) {
       for (var post in value.docs) {
+        post.reference.collection('comments').get().then((value) {
+          commentsNumber.addAll({
+            post.id: value.docs.length,
+          });
+          print(
+              '=======================>>>>> Comments Number ${commentsNumber[post.id]}');
+        }).catchError((error) {
+          print(error);
+        });
+      }
+
+      for (var post in value.docs) {
         post.reference.collection('likes').get().then((value) {
           posts.add(PostModel.fromJson(post.data()));
           postsId.add(post.id);
-          likes.add(value.docs.length);
+          likesNumber.addAll({
+            post.id: value.docs.length,
+          });
+          print(
+              '=======================>>>>> Likes Number ${likesNumber[post.id]}');
           emit(GetPostsSuccessState());
         });
       }
@@ -376,7 +393,8 @@ class SocialCubit extends Cubit<SocialStates> {
   }
 
   List<CommentModel> comments = [];
-  List<int> commentsNumber = [];
+
+  // List<int> commentsNumber = [];
 
   void getComments({
     required String postId,
@@ -481,6 +499,20 @@ class SocialCubit extends Cubit<SocialStates> {
         messages.add(MessageModel.fromJson(element.data()));
       });
       emit(GetMessagesSuccessState());
+    });
+  }
+
+  // delete user
+  void deleteUser() {
+    FirebaseAuth.instance.currentUser!.delete();
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(userModel!.uId)
+        .delete()
+        .then((value) {
+      emit(DeleteUserSuccessState());
+    }).catchError((error) {
+      emit(DeleteUserErrorState());
     });
   }
 }
