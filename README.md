@@ -1,5 +1,8 @@
 # Mini Social
-## Firebase
+## Firebase.
+## State Management Cubit.
+
+<text> ----------------------------------------------------------------------------------------------------------------------------- </text>
 
 ### Register and Login
 <img src="screenshots/two.jpg" width="400"> <img src="screenshots/one.jpg" width="400">
