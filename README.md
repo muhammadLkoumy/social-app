@@ -1,6 +1,7 @@
 # Mini Social
 ## Firebase.
 ## State Management Cubit.
+## Save local data with Shared Preferences.
 
 <text> ----------------------------------------------------------------------------------------------------------------------------- </text>
 
